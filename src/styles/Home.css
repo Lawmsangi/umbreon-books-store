@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=IBM+Plex+Sans:wght@500&display=swap');
+
+.home {
+    height: 100vh;
+    overflow-y: scroll;
+    scrollbar-width: none;  
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+        
+}
+
+.home-content {
+    display: flex;
+ 
+}
+
+.greeting-words {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+}
+
+.butterfly {
+    font-size: 1.5rem;
+    color: aquamarine;
+}
+
+.greeting{
+    max-height: 120px;
+    max-width: 120px;
+}
+
+.card-img {
+     width: 100%;
+     max-width: 200px;
+    
+}
+
+.home-categories {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.categories-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.see-all {
+    align-self: flex-end;
+    text-decoration: underline;
+}
