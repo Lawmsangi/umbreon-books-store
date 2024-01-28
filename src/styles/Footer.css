@@ -1,0 +1,50 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    height: 20vh;
+    background-color: #e2dcdc;
+    padding: 10px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 1rem;
+}
+
+.footer-link {
+    display: flex;
+    align-items: center;
+}
+
+.footer-link span {
+    margin-right: 8px;
+}
+
+.footer-icon {
+    font-size: 1.4rem;
+    align-self: center;
+}
+
+.whatsapp-icon {
+    color: #3aac64;
+}
+
+.call-icon {
+    color: #ff0000;
+}
+
+.email-icon {
+    color: #FF9D33;
+}
+
+.rights-reserved {
+    text-align: center;
+}
