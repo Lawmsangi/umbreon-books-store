@@ -4,6 +4,15 @@ import Greeting from '../assets/greeting.gif'
 import Ikigai from '../assets/ikigai.jpg'
 import { Link } from 'react-router-dom';
 import { BsEmojiWink } from "react-icons/bs";
+import Manga from '../assets/manga-category.jpg'
+import Romance from '../assets/romance-category.jpg'
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth" // Smooth scroll behavior
+  });
+}
 
 function Home() {
   return (
@@ -12,10 +21,12 @@ function Home() {
             <div className="greeting-words">
                 <p>Hi there! <BsEmojiWink /></p>
                 <p>Looking for your next read?</p>
-                <p>Well, you've come to the right place.</p>
+                <p>Well, you've landed in the perfect place.</p>
                 <h1>Welcome to Umbreon Books Library</h1>
-                <p>Don't forget to check out our curated recommendations and discover hidden literary gems.</p>
-                <p>And remember, every book you pre-order comes with an exclusive discount as our way of saying thank you for choosing us.</p>
+                <p>Delve into our extensive collection spanning various genres, from timeless classics to contemporary bestsellers.</p>
+    <p>Be sure to explore our handpicked recommendations, uncovering literary treasures you won't want to miss.</p>
+                <p>And remember, every pre-ordered book includes an exclusive discount as a token of our appreciation for choosing us.</p>
+                <p>While you can't directly order from this website, you can browse our selection and inquire about book availability. Feel free to start a chat with us!</p>
             </div>
             <img src={Greeting} alt="greeting" className='greeting' />
         </div>
@@ -28,16 +39,16 @@ function Home() {
                 </div>
 
                 <div className='card'>
-                    <img src={Ikigai} alt="img"/>
-                    <span>Bestsellers</span>
+                    <img src={Romance} alt="img"/>
+                    <span>Romance</span>
                 </div>
 
                 <div className='card'>
-                    <img src={Ikigai} alt="img"/>
-                    <span>Bestsellers</span>
+                    <img src={Manga} alt="img"/>
+                    <span>Mangas</span>
                 </div>
             </div>
-            <Link className='see-all'>
+            <Link to="/categories" className='see-all' onClick={scrollToTop}>
                 <span>See all categories</span>
             </Link>
         </div>
