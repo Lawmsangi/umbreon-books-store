@@ -1,0 +1,42 @@
+.categoryDetails {
+    display: flex;
+    flex-direction: column;
+    font-family: "Proxima Nova", Montserrat, Arial, sans-serif;
+}
+
+.categoryDetails h1 {
+    text-align: center;
+}
+
+.details-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+.details-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    width: 300px;
+    max-width: 320px;
+    padding: 10px;
+}
+
+.details-content img {
+    width: 100%;
+    max-width: 300px;
+}
+
+.strike {
+    color: rgb(145, 145, 127);
+    text-decoration: line-through;
+}
+
+.our-price {
+    color: rgb(227, 56, 56);
+}

@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=IBM+Plex+Sans:wght@500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300&display=swap');
 .home {
     height: 100vh;
     overflow-y: scroll;
@@ -13,14 +12,15 @@
 
 .home-content {
     display: flex;
- 
+    position: relative;
 }
 
 .greeting-words {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    font-family: 'Caveat', cursive;
+    flex: 1;
+    gap: 5px;
+    font-family: 'Gaegu', sans-serif;
     font-size: 1.2rem;
 }
 
@@ -32,6 +32,12 @@
 .greeting{
     max-height: 120px;
     max-width: 120px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: auto;
+        /* Maintain the image's aspect ratio */
+        max-width: 200px;
 }
 
 .card-img {
@@ -60,6 +66,10 @@
     flex-direction: column;
     gap: 10px;
     align-items: center;
+}
+
+.card img {
+    max-height: 250px;
 }
 
 .see-all {
