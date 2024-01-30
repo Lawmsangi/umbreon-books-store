@@ -40,3 +40,27 @@
 .our-price {
     color: rgb(227, 56, 56);
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pagination li {
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.pagination li.active {
+    background-color: #ff8800;
+    color: #fff;
+}
