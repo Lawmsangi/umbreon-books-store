@@ -8,7 +8,7 @@ function Categories() {
         {title: 'fiction', img: Ikigai},
         {title: 'non-fiction', img: Ikigai},
         {title: 'bestsellers', img: Ikigai},
-        {title: 'self help', img: Ikigai},
+        {title: 'self-help', img: Ikigai},
         {title: 'thriller', img: Ikigai},
         {title: 'mystery', img: Ikigai},
         {title: 'business', img: Ikigai},
@@ -20,6 +20,8 @@ function Categories() {
         {title: 'magic', img: Ikigai},
         {title: 'boy-love', img: Ikigai},
         {title: 'high-school', img: Ikigai},
+        {title: 'children', img: Ikigai},
+        {title: 'series', img: Ikigai},
     ]
   return (
     <div className='categories'>
