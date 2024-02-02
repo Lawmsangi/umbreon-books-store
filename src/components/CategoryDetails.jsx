@@ -35,7 +35,7 @@ function CategoryDetails() {
         {displayedBooks.map(book => (
           <div className='details-content' key={book.title}>
             <img src={book.img} alt={book.title} />
-            <h2>{book.title} by {book.author}</h2>
+            <h4>{book.title} by {book.author}</h4>
             <p><span className='strike'>₹{book.mrp}</span><span className='our-price'> ₹{book.ourPrice}</span></p>
           </div>
         ))}
