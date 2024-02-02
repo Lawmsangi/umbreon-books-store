@@ -6,6 +6,7 @@
 
 a {
     color: #6d6868;
+    text-decoration: none;
 }
 
 body {
@@ -16,6 +17,9 @@ body {
 }
 
 img {
-    width: 100%;
-    max-width: 200px;
+    
+}
+
+.App {
+    border: 1px solid red;
 }
