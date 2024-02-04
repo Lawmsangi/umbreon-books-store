@@ -44,6 +44,9 @@ function Categories() {
 
   const categoriesPerPage = 10; // Number of categories per page
   const [currentPage, setCurrentPage] = useState(1); // Current page number
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
 
   // Calculate the index range of categories to display based on the current page
   const startIndex = currentPage * categoriesPerPage;
@@ -56,10 +59,6 @@ function Categories() {
   // Handle page change
   const handlePageChange = ({ selected }) => {
     setCurrentPage(selected);
-    const categoriesContainer = document.querySelector('.categories');
-    if (categoriesContainer) {
-      categoriesContainer.scrollTo({ top: 0, behavior: 'smooth' });
-    }
   };
 
   return (
