@@ -20,7 +20,7 @@ function Navbar() {
 
     // Function to handle search input change
     const handleSearchChange = (e) => {
-        const value = e.target.value;
+        const value = e.target.value.toLowerCase();
         setSearchValue(value);
 
         // Filter books based on the search value
