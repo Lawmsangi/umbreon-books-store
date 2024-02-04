@@ -25,3 +25,8 @@
 .categories-link:active {
     transform: scale(1);
 }
+
+.pagination {
+    display: flex;
+    justify-self: end;
+}

@@ -25,6 +25,7 @@
     width: 300px;
     max-width: 320px;
     padding: 20px;
+    height: 400px;
 }
 
 .details-img {
@@ -34,13 +35,10 @@
 
 }
 
-.details-name {
-
-}
-
 .details-content img {
     width: 100%;
     max-width: 300px;
+    height: 300px;
 }
 
 .strike {

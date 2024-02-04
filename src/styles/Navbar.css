@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap');
 
 .navbar {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     height: 20vh;
-    max-width: 768px;
+    max-width: 768px;   
     min-width: 375px;
 }
 
@@ -14,7 +15,7 @@
     display: flex;
     justify-content: space-between;
     height: 10vh;
-    background-color: #ffdbdb;
+    background-color: #eee;
     width: 100%;
 }
 
@@ -79,4 +80,24 @@
 .navbar-search input[type="text"] {
     padding-right: 20px;
     outline: none;
+}
+
+.search-results {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-results p {
+    padding: 10px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.search-results p:hover {
+    background-color: #f4f4f4;
 }

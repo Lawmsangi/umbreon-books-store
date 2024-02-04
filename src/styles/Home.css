@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 .home {
     height: 100vh;
     overflow-y: scroll;
@@ -20,30 +20,22 @@
     flex-direction: column;
     flex: 1;
     gap: 5px;
-    font-family: 'Gaegu', sans-serif;
-    font-size: 1.2rem;
-}
-
-.butterfly {
-    font-size: 1.5rem;
-    color: aquamarine;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
 }
 
 .greeting{
-    max-height: 120px;
-    max-width: 120px;
+    max-height: 100px;
+    max-width: 100px;
     position: absolute;
     top: 0;
     right: 0;
     width: auto;
-        /* Maintain the image's aspect ratio */
-        max-width: 200px;
 }
 
 .card-img {
      width: 100%;
      max-width: 200px;
-    
 }
 
 .home-categories {
@@ -73,6 +65,14 @@
 }
 
 .see-all {
-    align-self: flex-end;
-    text-decoration: underline;
+    background-color: #5FB523;
+    color: #fff;
+    font-size: 1.3rem;
+    align-self: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.see-all:hover {
+    background-color: #4A8E17;
 }
