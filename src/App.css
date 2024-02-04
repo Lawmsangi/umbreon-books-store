@@ -11,9 +11,12 @@ a {
 }
 
 body {
-    height: 100vh;
     margin: 0 auto;
     max-width: 768px;
     min-width: 375px;
-    overflow-y: scroll;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+

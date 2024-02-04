@@ -3,8 +3,6 @@
 .books-details {
     display: flex;
     flex-direction: column;
-    height:60vh;
-    overflow-y: scroll;
     scrollbar-width: none;
     align-items: center;
     margin: 20px 40px;
