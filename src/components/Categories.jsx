@@ -1,43 +1,95 @@
-import React from 'react';
-import '../styles/Categories.css'
+import React, { useState, useEffect } from 'react';
+import '../styles/Categories.css';
 import { Link } from 'react-router-dom';
-import Ikigai from '../assets/ikigai.jpg'
+import Books from './books.json';
+import ReactPaginate from 'react-paginate';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 function Categories() {
-    const categories = [
-        {title: 'fiction', img: Ikigai},
-        {title: 'non-fiction', img: Ikigai},
-        {title: 'bestsellers', img: Ikigai},
-        {title: 'self-help', img: Ikigai},
-        {title: 'thriller', img: Ikigai},
-        {title: 'mystery', img: Ikigai},
-        {title: 'business', img: Ikigai},
-        {title: 'romance', img: Ikigai},
-        {title: 'young-adult', img: Ikigai},
-        {title: 'contemporary', img: Ikigai},
-        {title: 'fantasy', img: Ikigai},
-        {title: 'humor', img: Ikigai},
-        {title: 'magic', img: Ikigai},
-        {title: 'boy-love', img: Ikigai},
-        {title: 'high-school', img: Ikigai},
-        {title: 'children', img: Ikigai},
-        {title: 'series', img: Ikigai},
-    ]
+  // Extract all unique categories from the books data
+  const allCategories = Books.books.flatMap(book => book.categories);
+  const uniqueCategories = [...new Set(allCategories)];
+
+  // State to keep track of assigned images
+  const [assignedImages, setAssignedImages] = useState({});
+
+  // useEffect hook to assign images when the component mounts
+  useEffect(() => {
+    // Create a set to store used image URLs
+    const usedImages = new Set();
+
+    // Loop through categories and assign images
+    uniqueCategories.forEach(category => {
+      // Filter books with the current category
+      const booksWithCategory = Books.books.filter(book => book.categories.includes(category));
+
+      // Filter out books whose images are already used
+      const availableBooks = booksWithCategory.filter(book => !usedImages.has(book.img));
+
+      // Select a random book from available books
+      const selectedBook = availableBooks[Math.floor(Math.random() * availableBooks.length)];
+
+      // Update assignedImages state with the selected image URL for the category
+      setAssignedImages(prevState => ({
+        ...prevState,
+        [category]: selectedBook ? selectedBook.img : '' // Default to empty string if no book is available
+      }));
+      
+      // Add the selected image URL to the used images set
+      if (selectedBook) {
+        usedImages.add(selectedBook.img);
+      }
+    });
+  }, []);
+
+  const categoriesPerPage = 10; // Number of categories per page
+  const [currentPage, setCurrentPage] = useState(1); // Current page number
+
+  // Calculate the index range of categories to display based on the current page
+  const startIndex = currentPage * categoriesPerPage;
+  const endIndex = startIndex + categoriesPerPage;
+  const slicedCategories = uniqueCategories.slice(startIndex, endIndex);
+
+  // Total number of pages
+  const pageCount = Math.ceil(uniqueCategories.length / categoriesPerPage);
+
+  // Handle page change
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected);
+    const categoriesContainer = document.querySelector('.categories');
+    if (categoriesContainer) {
+      categoriesContainer.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className='categories'>
-        <div className="categories-card">
-          {categories.map((category, index) => (
-            <Link to={`/categories/${category.title}`} className='categories-link'>
+      <div className="categories-card">
+        {slicedCategories.map((category, index) => {
+          // Get the image URL associated with the category
+          const imageURL = assignedImages[category] || ''; // Default to empty string if image URL is not found
+          return (
+            <Link to={`/categories/${category}`} className='categories-link' key={index}>
               <div className='card'>
-                <img src={category.img} alt="img"/>
-                <span>{category.title}</span>
+                <img src={imageURL} alt="img"/>
+                <span>{category}</span>
               </div>
             </Link>
-          ))}
-            
-        </div>
+          );
+        })}
+      </div>
+      <ReactPaginate
+        pageCount={pageCount}
+        pageRangeDisplayed={5}
+        marginPagesDisplayed={2}
+        onPageChange={handlePageChange}
+        containerClassName={'pagination'}
+        activeClassName={'active'}
+        previousLabel={<FaChevronLeft />}
+        nextLabel={<FaChevronRight />}
+      />
     </div>
-  )
+  );
 }
 
-export default Categories
+export default Categories;
