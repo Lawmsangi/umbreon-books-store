@@ -24,7 +24,7 @@ function Home() {
                 <p>Well, you've landed in the perfect place.</p>
                 <h1>Welcome to Umbreon Books Library</h1>
                 <p>Delve into our extensive collection spanning various genres, from timeless classics to contemporary bestsellers.</p>
-    <p>Be sure to explore our handpicked recommendations, uncovering literary treasures you won't want to miss.</p>
+                <p>Be sure to explore our handpicked recommendations, uncovering literary treasures you won't want to miss.</p>
                 <p>And remember, every pre-ordered book includes an exclusive discount as a token of our appreciation for choosing us.</p>
                 <p>While you can't directly order from this website, you can browse our selection and inquire about book availability. Feel free to start a chat with us!</p>
             </div>
