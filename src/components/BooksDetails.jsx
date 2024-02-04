@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Books from './books.json';
 import '../styles/BooksDetails.css';
+import Rating from './Rating';
 
 function BookDetails() {
   const { title } = useParams();
@@ -15,20 +16,22 @@ function BookDetails() {
     <div>
       {filteredBooks.map(book => (
         <div key={book.title} className='books-details'>
-          <h1>{book.title}</h1>
           <div className='books-image'>
             <img src={book.img} alt={book.title} />
           </div>
+          
           <div className='book-details' >
-            <p>Author: {book.author}</p>
-            <p>Categories: {book.categories.join(', ')}</p>
-            <p>Our Price: ₹{book.ourPrice}</p>
-            <p>MRP: ₹{book.mrp}</p>
-            <p>Pages: {book.pages}</p>
-            <p>Published: {book.published}</p>
-            <p>Ratings: {book.ratings}</p>
-            <p>Description: {book.description}</p>
-            <p>Reviews: <a href={book.reviews}>Read Reviews</a></p>
+            <h3>{book.title} by {book.author}</h3>
+            <div className="price-rating">
+              <p><span className='strike'>₹{book.mrp}</span><span className='our-price'> ₹{book.ourPrice}</span></p>
+              <p className='ratings'><Rating rating={book.ratings} /> {book.ratings}</p>
+            </div>
+            <p className='genres'>Genres: {book.categories.join(', ')}</p>
+            <p>{book.pages} pages</p>
+            <p>{book.published}</p>
+            <p>{book.description}</p>
+            
+            <p style={{ textDecoration: 'underline' }}><a href={book.reviews}>Read Reviews From Goodreads</a></p>
           </div>
         </div>
       ))}
