@@ -1,0 +1,19 @@
+.books-details {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.books-image img {
+    width: 100%;
+        max-width: 300px;
+
+}
+
+.book-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
