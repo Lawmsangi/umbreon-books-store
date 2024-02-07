@@ -12,10 +12,8 @@ a {
 
 body {
     margin: 0 auto;
-    max-width: 768px;
-    min-width: 375px;
-   
-
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 html {

@@ -3,7 +3,6 @@
 .books-details {
     display: flex;
     flex-direction: column;
-    scrollbar-width: none;
     align-items: center;
     margin: 20px 40px;
     font-family: 'Roboto Flex', sans-serif;
@@ -39,4 +38,22 @@
 
 .star-rating {
     color: #f0c14b;
+}
+
+@media screen and (min-width: 768px) {
+    .books-details {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .books-image img{
+        width: 200px;
+    }
+
+    .book-details {
+        display: flex;
+        gap: 20px;
+    }
 }

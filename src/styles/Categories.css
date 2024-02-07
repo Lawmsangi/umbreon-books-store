@@ -2,9 +2,11 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
     margin: 20px 0;
+}
+
+.categories span {
+    margin-left: 10px;
 }
 
 .categories-link {
