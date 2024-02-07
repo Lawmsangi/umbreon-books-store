@@ -9,7 +9,7 @@ function Categories() {
   // Extract all unique categories from the books data
   const allCategories = Books.books.flatMap(book => book.categories);
   const uniqueCategories = [...new Set(allCategories)];
-
+  const totalBooks = Books.books.length;
   // State to keep track of assigned images
   const [assignedImages, setAssignedImages] = useState({});
 
@@ -63,6 +63,8 @@ function Categories() {
 
   return (
     <div className='categories'>
+      <span>{uniqueCategories.length} Categories</span>
+      <span>Total Books:{totalBooks}</span>
       <div className="categories-card">
         {slicedCategories.map((category, index) => {
           // Get the image URL associated with the category
