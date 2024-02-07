@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/Navbar.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { SlMenu } from "react-icons/sl";
-import { TbShoppingCartHeart } from "react-icons/tb";
-import { HiOutlineHeart } from "react-icons/hi";
 import { CiLocationOn } from "react-icons/ci";
 import { BsSearchHeart } from "react-icons/bs";
 import { IoArrowBack } from "react-icons/io5";
@@ -13,6 +10,7 @@ function Navbar() {
     const navigate = useNavigate();
     const [searchValue, setSearchValue] = useState('');
     const [searchResults, setSearchResults] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState('');
 
     const goBack = () => {
         navigate(-1); // Go back to the previous page
@@ -39,19 +37,37 @@ function Navbar() {
         setSearchValue('');
     };
 
+     const handleCategoryChange = (e) => {
+        const category = e.target.value;
+        setSelectedCategory(category);
+        if (category !== '') {
+            navigate(`/categories/${category}`);
+        }
+    };
+     
+    const allCategories = Books.books.flatMap(book => book.categories);
+    const uniqueCategories = [...new Set(allCategories)];
+
     return (
         <div className="navbar">
             <div className="navbar-first">
                 <div className="navbar-links">
-                    <Link><SlMenu /></Link>
-                    <Link to="https://www.google.com/maps?q=Umbreon+Books,+near+upc+church,+Zuangtui,+Aizawl,+Mizoram+796014&ftid=0x374debac308b7d17:0x967946d1a761b999&hl=en-IN&gl=in&entry=gps&lucs=47062720&g_ep=CAISBjYuNTYuMhgAINeCAyoINDcwNjI3MjBCAklO&g_st=iw"><CiLocationOn /></Link>
+                    <Link to="https://www.google.com/maps?q=Umbreon+Books,+near+upc+church,+Zuangtui,+Aizawl,+Mizoram+796014&ftid=0x374debac308b7d17:0x967946d1a761b999&hl=en-IN&gl=in&entry=gps&lucs=47062720&g_ep=CAISBjYuNTYuMhgAINeCAyoINDcwNjI3MjBCAklO&g_st=iw">
+                        <CiLocationOn />
+                    </Link>
+                    <Link to="/" className="title">
+                        <h5>Umbreon Books</h5>
+                    </Link>
                 </div>
-                <Link to="/" className="title">
-                    <h3>Umbreon Books</h3>
-                </Link>
                 <div className="navbar-links">
-                    <a href="/about"><HiOutlineHeart /></a>
-                    <a href="/"><TbShoppingCartHeart /></a>
+                    <div className="dropdown">
+                        <select name="categories" id="categories" value={selectedCategory} onChange={handleCategoryChange}>
+                            <option value="">Categories</option>
+                            {uniqueCategories.map((category, index) => (
+                                <option value={category} key={index}>{category}</option>
+                            ))} 
+                        </select>
+                    </div>
                 </div>
             </div>
 
