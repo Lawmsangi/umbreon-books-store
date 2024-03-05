@@ -3,9 +3,13 @@ import { useParams } from 'react-router-dom';
 import Books from './books.json';
 import '../styles/BooksDetails.css';
 import Rating from './Rating';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../redux/cartsSlice';
 
 function BookDetails() {
   const { title } = useParams();
+  const dispatch = useDispatch();
+
   const filteredBooks = Books.books.filter(book => book.title.includes(title));
 
   if (filteredBooks.length === 0) {
@@ -26,6 +30,12 @@ function BookDetails() {
               <p><span className='strike'>₹{book.mrp}</span><span className='our-price'> ₹{book.ourPrice}</span></p>
               <p className='ratings'><Rating rating={book.ratings} /> {book.ratings}</p>
             </div>
+            <button 
+                className='cart-btn'
+                type='button'
+                onClick={()=> dispatch(addToCart(book))}>
+                  Add to Cart
+              </button>
             <p className='genres'>Genres: {book.categories.join(', ')}</p>
             <p>{book.pages} pages</p>
             <p>{book.published}</p>
