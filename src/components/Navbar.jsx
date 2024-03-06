@@ -4,9 +4,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { CiLocationOn } from "react-icons/ci";
 import { BsSearchHeart } from "react-icons/bs";
 import { IoArrowBack } from "react-icons/io5";
+import { IoCartOutline } from "react-icons/io5";
 import Books from './books.json'; 
+import { useSelector } from 'react-redux';
 
 function Navbar() {
+    const { cart } = useSelector((store)=>store.cart)
     const navigate = useNavigate();
     const [searchValue, setSearchValue] = useState('');
     const [searchResults, setSearchResults] = useState([]);
@@ -77,6 +80,12 @@ function Navbar() {
                     <input type="text" placeholder="Search" value={searchValue} onChange={handleSearchChange} />
                     <span className="search-icon"><BsSearchHeart /></span>
                 </div>
+                <Link to="/checkout">
+                    <div className="navbar-cart">
+                        <IoCartOutline className='cart-icon' />
+                        <span className='count-cart'>{cart.length}</span>
+                    </div>
+                </Link>
             </div>
 
             {searchValue.trim() !== '' && (
@@ -91,6 +100,8 @@ function Navbar() {
                     {searchResults.length > 7 && <p>...</p>}
                 </div>
             )}
+
+
         </div>
     );
 }
