@@ -21,7 +21,37 @@
     gap: 5px;
 }
 
-.checkout-product__info button {
-    display: flex;
-    justify-self: flex-end;
+.remove-btn {
+    background-color: #b53d3d;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 7px;
+    margin-top: auto;
+    margin-bottom: 10px;
+    width: 130px;
+}
+
+.remove-btn:hover {
+    background-color: #661418;
+}
+
+@media screen and (max-width: 768px) {
+    .checkout-product {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .checkout-product img {
+        max-width: 100px;
+        max-width: 100px;
+    }
+
+    .checkout-product__info {
+        align-items: center;
+    }
+
+    .remove-btn {
+        align-self: center;
+    }
 }
