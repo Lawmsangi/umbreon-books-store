@@ -25,7 +25,13 @@ const Checkout = () => {
               cart.map((item,index) => (
                 <CheckoutProduct
                   key={index}
-                 item={item}/>
+                  index={index} // Make sure to pass the index prop here
+                  title={item.title}
+                  author={item.author}
+                  image={item.img}
+                  price={item.ourPrice}
+                  mrp={item.mrp}
+                />
               ))
             )}
           </div>
@@ -36,9 +42,14 @@ const Checkout = () => {
             <h2>Order Summary</h2>
             <p><span>Subtotal ({cart.length} items)</span> <span>{}</span></p>
             <span className=''></span>
-            <p><span>Order Total:</span> <span>₹ {getCartTotal(cart).toFixed(2)}</span></p>
+            <p><span>Order Total:</span> <span>₹{getCartTotal(cart).toFixed(2)}</span></p>
           </>
-          <button onClick={e =>navigate('/payment')}>Proceed to buy</button>
+          <button 
+            className='buy-btn'
+            onClick={e =>navigate('/payment')}
+          >
+            Checkout
+          </button>
         </div>
     </div>
   )
