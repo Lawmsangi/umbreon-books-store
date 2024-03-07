@@ -33,17 +33,17 @@
 }
 
 .cart-btn {
-    background-color: #eee;
+    background-color: #3D6DB5;
     padding: 10px;
     width: 100px;
     border-radius: 10px;
     border: none;
     cursor: pointer;
-
+    color: white;
 }
 
 .cart-btn:hover{
-    background-color: aliceblue;
+    background-color: #0f2e4f;
 }
 
 .genres {
