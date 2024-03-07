@@ -3,11 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import CheckoutProduct from './CheckoutProduct'
 import { Link } from 'react-router-dom'
 import '../styles/Payment.css'
-// import CurrencyFormat from "react-currency-format";
-// import { getBasketTotal } from './reducer';
-// import{CardElement} from "@stripe/react-stripe-js";
-// import axios from './axios';
-
 
 const Payment = () => {
   const dispatch = useDispatch()
