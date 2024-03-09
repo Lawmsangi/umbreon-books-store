@@ -1,6 +1,6 @@
 .payment {
-    background-color: white;
-
+    display: flex;
+    flex-direction: column;
 }
 
 .payment__container>h1 {
