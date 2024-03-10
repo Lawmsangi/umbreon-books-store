@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const initialState = {
     cart: [],
     isLoading: false,
+    wishlist: [],
 };
 
 const loadCartFromStorage = () => {
@@ -14,6 +15,15 @@ const saveCartToLocalStorage = (cart) => {
     localStorage.setItem("cart",JSON.stringify(cart))
 }
 
+const loadWishlistFromStorage = () => {
+    const existingWishlistFromStorage = JSON.parse(localStorage.getItem('wishlist')) || [];
+    return existingWishlistFromStorage;
+}
+
+const saveWishlistToLocalStorage = (wishlist) => {
+    localStorage.setItem("wishlist",JSON.stringify(wishlist))
+}
+
 // Selector
 export const getCartTotal = (cart) =>
     cart?.reduce((amount, item) => item.ourPrice + amount, 0);
@@ -23,6 +33,7 @@ const cartSlice = createSlice({
     initialState: {
         ...initialState,
         cart: loadCartFromStorage(),
+        wishlist: loadWishlistFromStorage(),
     },
     reducers: {
         addToCart: (state, action) => {
@@ -44,26 +55,38 @@ const cartSlice = createSlice({
             }
             saveCartToLocalStorage(state.cart);
         },
-        addBookQuantity: (state, action) => {
-            const { book, amount } = action.payload;
-            const currentQuantity = state.cart.filter(item => item.title === book.title && item.author === book.author).length;
-            if (currentQuantity < amount) {
-                // Add more copies of the book if needed
-                for (let i = 1; i < amount - currentQuantity; i++) {
-                    state.cart.push(book);
-                }
-            } else if (currentQuantity > amount) {
-                // Remove excess copies of the book
-                state.cart = state.cart.filter(item => item.id !== book.id || item.title === book.title && item.author === book.author && --currentQuantity >= amount);
-            }
+        // addBookQuantity: (state, action) => {
+        //     const { book, amount } = action.payload;
+        //     const currentQuantity = state.cart.filter(item => item.title === book.title && item.author === book.author).length;
+        //     if (currentQuantity < amount) {
+        //         for (let i = 1; i < amount - currentQuantity; i++) {
+        //             state.cart.push(book);
+        //         }
+        //     } else if (currentQuantity > amount) {
+        //         state.cart = state.cart.filter(item => item.id !== book.id || item.title === book.title && item.author === book.author && --currentQuantity >= amount);
+        //     }
         
-            saveCartToLocalStorage(state.cart);
-        }
-
+        //     saveCartToLocalStorage(state.cart);
+        // }
+        addToWishlist: (state, action) => {
+            state.wishlist.push(action.payload);
+            saveWishlistToLocalStorage(state.wishlist);
+        },
+        removeFromWishlist: (state, action) => {
+            const index = action.payload;
+            if (index >= 0 && index < state.wishlist.length) {
+                state.wishlist.splice(index, 1);
+            } else {
+                console.warn(
+                    `Can't remove product at index ${index} as it's out of range!`
+                );
+            }
+            saveWishlistToLocalStorage(state.wishlist);
+        },
 
     }
 });
 
-export const { addToCart, emptyCart, removeFromCart, addBookQuantity } = cartSlice.actions;
+export const { addToCart, emptyCart, removeFromCart, addBookQuantity, addToWishlist, removeFromWishlist } = cartSlice.actions;
 
 export default cartSlice.reducer;
