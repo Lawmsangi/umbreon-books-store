@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300&display=swap');
+
 .categoryDetails {
     display: flex;
     flex-direction: column;
@@ -31,17 +33,43 @@ span {
 }
 
 .details-img {
-    flex: 1;
+    display: flex;
     justify-content: center;
     align-self: center;
-
+    position: relative;
 }
 
-.details-content img {
-    width: 100%;
+.details-img img {
     max-width: 300px;
     height: 250px;
 }
+
+.wishlistIcon-container {
+    display: flex;
+    align-self: flex-end;
+}
+
+.wishlist-icon {
+    color: #ccc;
+    cursor: pointer;
+    font-size: 20px;
+    display: inline-block;
+    border: none;
+    background-color: transparent;
+}
+
+.wishlist-icon:hover {
+    color: #ff8800;
+}
+
+.wishlist-text {
+    display: none;
+}
+
+.wishlist-icon:hover .wishlist-text {
+    display: block;
+}
+
 
 .strike {
     color: rgb(145, 145, 127);

@@ -17,6 +17,11 @@
     width: 100%;
 }
 
+.navbar-right {
+    display: flex;
+    justify-content: space-around;
+}
+
 .navbar-links {
     display: flex;
     align-items: center;
@@ -87,6 +92,18 @@
     font-family: 'IBM Plex Sans', sans-serif;
     text-transform: uppercase;
     font-size: 0.9rem;
+}
+
+.navbar-wishlist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.wishlist {
+    display: flex;
+    gap: 5px;
 }
 
 .navbar-second {
