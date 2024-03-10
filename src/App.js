@@ -8,6 +8,7 @@ import Checkout from './components/Checkout';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Payment from './components/Payment';
+import WishList from './components/WishList';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/categories/:category/:title" element={<><Navbar/><BooksDetails/></>} />
         <Route path="/checkout" element={<><Navbar/><Checkout /></>} />
         <Route path="/payment" element={<><Payment /><Footer/></>} />
+        <Route path="/wishlist" element={<><Navbar /><WishList/></>} />
       </Routes>
     </div>
   );
