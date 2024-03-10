@@ -7,6 +7,7 @@ import { IoArrowBack } from "react-icons/io5";
 import { IoCartOutline } from "react-icons/io5";
 import Books from './books.json'; 
 import { useSelector } from 'react-redux';
+import { FaHeart } from "react-icons/fa";
 
 function Navbar() {
     const { cart } = useSelector((store)=>store.cart)
@@ -62,7 +63,8 @@ function Navbar() {
                         <h5>Umbreon Books</h5>
                     </Link>
                 </div>
-                <div className="navbar-links">
+                <div className="navbar-right">
+                    <div className="navbar-links">
                     <div className="dropdown">
                         <select name="categories" id="categories" value={selectedCategory} onChange={handleCategoryChange}>
                             <option value="">Categories</option>
@@ -71,6 +73,14 @@ function Navbar() {
                             ))} 
                         </select>
                     </div>
+                </div>
+                <div className="navbar-wishlist">
+                    <Link to="/wishlist"
+                    className='wishlist'>
+                        <FaHeart />
+                        <span>Wishlist</span>
+                    </Link>
+                </div>
                 </div>
             </div>
 
