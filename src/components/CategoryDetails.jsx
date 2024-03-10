@@ -4,8 +4,12 @@ import Books from './books.json';
 import '../styles/CategoryDetails.css';
 import ReactPaginate from 'react-paginate';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaHeart } from "react-icons/fa";
+import { addToWishlist } from '../redux/cartsSlice';
+import { useDispatch } from 'react-redux';
 
 function CategoryDetails() {
+  const dispatch = useDispatch();
   const { category } = useParams();
   console.log("Category:", category);
   const [currentPage, setCurrentPage] = useState(1);
@@ -34,17 +38,26 @@ function CategoryDetails() {
       <span>{`Page ${currentPage}`}</span>
       <div className='details-container'>
         {displayedBooks.map(book => (
-          <Link to={`/categories/category/${book.title}`} key={book.title}>
-            <div className='details-content' key={book.title}>
+          <div className='details-content' key={book.title}>
+            <Link to={`/categories/category/${book.title}`}>
               <div className="details-img">
                 <img src={book.img} alt={book.title} />
               </div>
-              <div className="details-name">
-                <h4>{book.title} by {book.author}</h4>
-                <p><span className='strike'>₹{book.mrp}</span><span className='our-price'> ₹{book.ourPrice}</span></p>
-              </div>
+            </Link>
+            <div className="wishlistIcon-container">
+              <button
+                className='wishlist-icon'
+                onClick={() => dispatch(addToWishlist(book))}
+              >
+                <FaHeart />
+                {/* <span className='wishlist-text'>Make your collections</span> */}
+              </button>
             </div>
-          </Link>
+            <div className="details-name">
+              <h4>{book.title} by {book.author}</h4>
+              <p><span className='strike'>₹{book.mrp}</span><span className='our-price'> ₹{book.ourPrice}</span></p>
+            </div>
+          </div>
         ))}
       </div>
         <ReactPaginate
