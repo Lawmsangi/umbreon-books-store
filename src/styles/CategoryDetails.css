@@ -46,7 +46,9 @@ span {
 
 .wishlistIcon-container {
     display: flex;
+    flex-direction: column;
     align-self: flex-end;
+    position: relative;
 }
 
 .wishlist-icon {
@@ -56,18 +58,28 @@ span {
     display: inline-block;
     border: none;
     background-color: transparent;
+   
 }
 
 .wishlist-icon:hover {
     color: #ff8800;
 }
 
-.wishlist-text {
-    display: none;
-}
-
 .wishlist-icon:hover .wishlist-text {
     display: block;
+}
+
+.wishlist-alert {
+    background-color: #ff8800;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.wishlist-icon-active {
+    fill: red;
+    /* Change the color to red when the book is in the wishlist */
 }
 
 

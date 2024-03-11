@@ -53,3 +53,29 @@
     transition: 0.3s;
     font-size: 16px;
 }
+
+.wishlist-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    font-size: 20px;
+    font-weight: 600;
+    color: #666;
+}
+
+.wishlist-empty img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.wishlist-empty button {
+    border: none;
+    background-color: #ff8800;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    margin-top: 10px;
+}

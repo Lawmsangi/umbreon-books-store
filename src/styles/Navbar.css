@@ -96,6 +96,8 @@
 
 .navbar-wishlist {
     display: flex;
+    margin-top: 10px;
+    margin-right: 10px;
     justify-content: center;
     align-items: center;
     gap: 5px;
