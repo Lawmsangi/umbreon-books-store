@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import '../styles/WishList.css';
 import { removeFromWishlist } from '../redux/cartsSlice';
 import { Link } from 'react-router-dom';
+import sadIcon from '../assets/sadbook-icon.jpg'
 
 const WishList = () => {
     const dispatch = useDispatch();
@@ -10,12 +11,17 @@ const WishList = () => {
 
   return (
     <div className='wishlist-container'>
-        <h1>WishList</h1>
         <h2>Your collections</h2>
         <div className="wishlist-content">
         {/* Check if the wishlist is empty */}
         {wishlist.length === 0 ? (
-            <p>Your wishlist is empty</p>
+            <div className='wishlist-empty'>
+                <img src={sadIcon} alt="sadIcon"/>
+                <p>No items in the wishlist</p>
+                <Link to={`/categories`}>
+                    <button>Continue Shopping</button>
+                </Link>
+            </div>
         ) : (
             // If not empty, map through the wishlist items and render each book
             wishlist.map((item,index) => (
