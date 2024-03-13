@@ -14,9 +14,6 @@ function CategoryDetails() {
   const [alertBooks, setAlertBooks] = useState([]); 
   const booksPerPage = 10;
 
-    // Get wishlist from Redux state
-  const wishlist = useSelector(state => state.cart.wishlist);
-
   const filteredBooks = Books.books.filter(book => book.categories.includes(category));
   const startIndex = (currentPage - 1) * booksPerPage;
   const endIndex = startIndex + booksPerPage;
@@ -30,17 +27,19 @@ function CategoryDetails() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentPage]);
 
+  const { wishlist } = useSelector((store)=>store.cart) 
+
   const handleAddToWishlist = (book) => {
     dispatch(addToWishlist(book));
-    setAlertBooks(prevAlertBooks => [...prevAlertBooks, { book}]); 
-    setTimeout(() => {
-      setAlertBooks(prevAlertBooks => prevAlertBooks.filter(item => item.book !== book));
+    const isBookInWishlist = wishlist.some(item => item.title === book.title);
+    if (!isBookInWishlist) {
+        setAlertBooks(prevAlertBooks => [...prevAlertBooks, { book, type: 'added' }]);
+    } else {
+        setAlertBooks(prevAlertBooks => [...prevAlertBooks, { book, type: 'alreadyInWishlist' }]);
+    }
+     setTimeout(() => {
+        setAlertBooks(prevAlertBooks => prevAlertBooks.filter(item => item.book !== book));
     }, 3000);
-  };
-
-    // Check if a book is in the wishlist
-  const isInWishlist = (book) => {
-    return wishlist.some(item => item.title === book.title && item.author === book.author);
   };
 
   return (
@@ -57,17 +56,22 @@ function CategoryDetails() {
             </Link>
             <div className="wishlistIcon-container">
               <button
-                className={`wishlist-icon ${isInWishlist(book) ? 'wishlist-icon-active' : ''}`} // Add conditional class for active wishlist
+                className={`wishlist-icon ${wishlist.some(item => item.title === book.title) ? 'in-wishlist' : ''}`}
                 onClick={() => handleAddToWishlist(book)}
               >
                 <FaHeart />
               </button>
             </div>
-            {alertBooks.some(item => item.book === book) && (
-                <div className="wishlist-alert" >
-                  {`Added "${book.title}" to wishlist!`}
-                </div>
-              )}
+              {alertBooks.some(item => item.book === book && item.type === 'added') && (
+                    <div className="wishlist-alert" >
+                        {`Added "${book.title}" to wishlist!`}
+                    </div>
+                )}
+                {alertBooks.some(item => item.book === book && item.type === 'alreadyInWishlist') && (
+                    <div className="wishlist-alert" >
+                        {`"${book.title}" is already in the wishlist!`}
+                    </div>
+                )}
             <div className="details-name">
               <h4>{book.title} by {book.author}</h4>
               <p><span className='strike'>₹{book.mrp}</span><span className='our-price'> ₹{book.ourPrice}</span></p>
