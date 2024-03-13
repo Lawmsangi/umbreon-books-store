@@ -77,7 +77,7 @@ function Navbar() {
                 <div className="navbar-wishlist">
                     <Link to="/wishlist"
                     className='wishlist'>
-                        <FaHeart />
+                        <FaHeart className='navbar-wishlist-icon'/>
                         <span>Wishlist</span>
                     </Link>
                 </div>
