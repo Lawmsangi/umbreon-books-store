@@ -24,7 +24,6 @@ const saveWishlistToLocalStorage = (wishlist) => {
     localStorage.setItem("wishlist",JSON.stringify(wishlist))
 }
 
-// Selector
 export const getCartTotal = (cart) =>
     cart?.reduce((amount, item) => item.ourPrice + amount, 0);
 
@@ -55,19 +54,6 @@ const cartSlice = createSlice({
             }
             saveCartToLocalStorage(state.cart);
         },
-        // addBookQuantity: (state, action) => {
-        //     const { book, amount } = action.payload;
-        //     const currentQuantity = state.cart.filter(item => item.title === book.title && item.author === book.author).length;
-        //     if (currentQuantity < amount) {
-        //         for (let i = 1; i < amount - currentQuantity; i++) {
-        //             state.cart.push(book);
-        //         }
-        //     } else if (currentQuantity > amount) {
-        //         state.cart = state.cart.filter(item => item.id !== book.id || item.title === book.title && item.author === book.author && --currentQuantity >= amount);
-        //     }
-        
-        //     saveCartToLocalStorage(state.cart);
-        // }
         addToWishlist: (state, action) => {
             const newItem = action.payload;
             // Check if the item already exists in the wishlist
@@ -88,7 +74,6 @@ const cartSlice = createSlice({
             }
             saveWishlistToLocalStorage(state.wishlist);
         },
-
     }
 });
 
