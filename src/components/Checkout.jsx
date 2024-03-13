@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/Checkout.css'
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getCartTotal } from '../redux/cartsSlice';
 import CheckoutProduct from './CheckoutProduct';
 
@@ -19,7 +19,12 @@ const Checkout = () => {
           <div className="checkout-details">
             <h3>({cart.length}) Items from Umbreon Books</h3>
             {cart.length === 0 ? (
+              <>
               <p>Your cart is empty</p>
+              <Link to={`/categories`}>
+                    <button>Continue Shopping</button>
+                </Link>
+              </>
             ) : (
               // If not empty, map through the cart items and render each CheckoutProduct component
               cart.map((item,index) => (
