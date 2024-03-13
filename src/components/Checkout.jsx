@@ -22,7 +22,7 @@ const Checkout = () => {
               <>
               <p>Your cart is empty</p>
               <Link to={`/categories`}>
-                    <button>Continue Shopping</button>
+                    <button className='checkout-details-btn'>Continue Shopping</button>
                 </Link>
               </>
             ) : (
