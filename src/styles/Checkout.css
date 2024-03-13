@@ -56,6 +56,16 @@
     padding-top: 10px;
 }
 
+.checkout-details button {
+    border: none;
+    background-color: #ff8800;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
 
 .checkout-right {
     display: flex;
