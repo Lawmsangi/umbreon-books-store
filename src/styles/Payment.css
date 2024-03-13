@@ -32,3 +32,16 @@
 .payment__details {
     flex: 0.8;
 }
+
+.payment__details button {
+    background-color: #346250;
+    border: none;
+    width: 200px;
+    padding: 10px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.payment__details button:hover {
+    background-color: #1e3d2b;
+}

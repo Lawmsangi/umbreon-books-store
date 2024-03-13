@@ -1,66 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import CheckoutProduct from './CheckoutProduct'
 import { Link } from 'react-router-dom'
 import '../styles/Payment.css'
+import useRazorpay from "react-razorpay";
+import { getCartTotal } from '../redux/cartsSlice'
+import LogoIcon from '../assets/umbreon_books.png'
 
 const Payment = () => {
-  const dispatch = useDispatch()
   const { cart } = useSelector((store)=>store.cart)
-    // // let navigate = useNavigate();
+  const [Razorpay] = useRazorpay();
+  
+  const handlePayment = async () => {
+//   const order = await createOrder(params); //  Create order on your backend
+    const totalAmount = getCartTotal(cart)
+  const options = {
+    key: "rzp_test_DJ0wezYx3QyIiu", // Enter the Key ID generated from the Dashboard
+    amount: totalAmount * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    currency: "INR",
+    name: "Umbreon Books",
+    description: "Test Transaction",
+    image: LogoIcon,
+    // order_id: "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of createOrder().
+    // handler: function (response) {
+    //   alert(response.razorpay_payment_id);
+    //   alert(response.razorpay_order_id);
+    //   alert(response.razorpay_signature);
+    // },
+    prefill: {
+      name: "Lawmsangi Varte",
+      email: "lawmsangivarte22@gmail.com",
+      contact: "6009766073",
+    },
+    notes: {
+      address: "Zuangtui, Aizawl",
+    },
+    theme: {
+      color: "#3399cc",
+    },
+  };
 
-    // // const stripe=useStripe();
-    // // const elements = useElements();
+  const rzp1 = new Razorpay(options);
+  rzp1.open();
+};
 
-    // const[error, setError]= useState(null);
-    // const[disabled, setDisabled] = useState(true);
-    
-    // const [processing, setProcessing] = useState("");
-    // const [succeeded, setSucceeded] = useState(false);
-    // const[clientSecret, setClientSecret] = useState(true);
 
-    // useEffect(() =>{
-    //     const getClientSecret = async()=>{
-    //         const response = await axios({
-    //             method:'post',
-    //             url:`/payment/create?total=${getBasketTotal(basket)* 100}`
-    //         });
-    //         setClientSecret(response.data.clientSecret);
-    //     }
-    //     getClientSecret();
-    // },[basket])
-
-    // console.log('the secret is',clientSecret)
-    // console.log('👱',user)
-
-    // const handleSubmit=async(event)=>{
-    //      event.preventDefault();
-    //     setProcessing(true);
-
-    //     const payload = await stripe.confirmCardPayment(clientSecret, 
-    //         {payment_method:{
-    //             card: elements.getElement(CardElement)
-    //         }
-    //     }).then(({paymentIntent})=>{
-    //         //paymentIntent=payment.confirmation
-    //         setSucceeded(true);
-    //         setError(null);
-    //         setProcessing(false);
-
-    //         dispatch({
-    //             type: 'EMPTY_BASKET'
-    //         })
-
-    //         navigate('/orders')
-    //     })
-        
-    // }
-
-    // const handleChange=event=>{
-    //     setDisabled(event.empty);
-    //     setError(event.error ? event.error.message : "");
-
-    // }
   return (
     <div className='payment'>
        <div className="payment__container">
@@ -94,33 +78,10 @@ const Payment = () => {
                 <div className="payment__title">
                     <h3>Payment method</h3>
                 </div>
-                {/* <div className="payment__details">
-                    <form onSubmit={handleSubmit}>
-                        <CardElement onChange={handleChange} />   
-                        <div className="payment__priceContainer">
-                            <CurrencyFormat
-                                renderText={(value)=>(
-                                    <>
-                                    <p>
-                                    
-                                        <strong>Order Total:{value}</strong>
-                                    </p>
-                                    </>
-                                )}
-                                decimalScale={2}
-                                value={getBasketTotal(basket)}
-                                displayType={'text'}
-                                thousandSeparator={true}
-                                prefix={"₹"}
-                                />
-                            <button disabled={processing || disabled ||succeeded}>
-                            <span>{processing ? <p>processing</p>: "Buy Now"}</span>    
-                            </button> 
-                        </div>
-                        {}
-                        {error && <div>{error}</div>}
-                    </form>    
-                </div> */}
+                <div className="payment__details">
+                    {/* Render a button to initiate payment */}
+                    <button onClick={handlePayment}>Pay Now</button>
+                </div>
             </div>
        </div>
     </div>
