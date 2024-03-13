@@ -69,8 +69,13 @@ const cartSlice = createSlice({
         //     saveCartToLocalStorage(state.cart);
         // }
         addToWishlist: (state, action) => {
-            state.wishlist.push(action.payload);
-            saveWishlistToLocalStorage(state.wishlist);
+            const newItem = action.payload;
+            // Check if the item already exists in the wishlist
+            const exists = state.wishlist.some(item => item.title === newItem.title);
+            if (!exists) {
+                state.wishlist = [...state.wishlist, newItem];
+                saveWishlistToLocalStorage(state.wishlist);
+            }
         },
         removeFromWishlist: (state, action) => {
             const index = action.payload;

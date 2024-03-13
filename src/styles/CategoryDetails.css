@@ -65,10 +65,6 @@ span {
     color: #ff8800;
 }
 
-.wishlist-icon:hover .wishlist-text {
-    display: block;
-}
-
 .wishlist-alert {
     background-color: #ff8800;
     color: #fff;
@@ -77,11 +73,9 @@ span {
     font-size: 12px;
 }
 
-.wishlist-icon-active {
-    fill: red;
-    /* Change the color to red when the book is in the wishlist */
+.in-wishlist  {
+    color: #ff8800;
 }
-
 
 .strike {
     color: rgb(145, 145, 127);

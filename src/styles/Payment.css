@@ -36,8 +36,9 @@
 .payment__details button {
     background-color: #346250;
     border: none;
-    width: 200px;
+    width: 100px;
     padding: 10px;
+    margin-left: 20px;
     color: #fff;
     text-transform: uppercase;
 }

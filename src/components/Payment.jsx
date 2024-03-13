@@ -79,7 +79,6 @@ const Payment = () => {
                     <h3>Payment method</h3>
                 </div>
                 <div className="payment__details">
-                    {/* Render a button to initiate payment */}
                     <button onClick={handlePayment}>Pay Now</button>
                 </div>
             </div>
