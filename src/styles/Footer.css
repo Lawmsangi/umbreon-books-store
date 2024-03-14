@@ -12,6 +12,10 @@
     justify-content: space-between;
 }
 
+.footer-links a {
+    color: #346250;
+}
+
 .footer-icons {
     display: flex;
     flex-direction: column;
@@ -31,6 +35,7 @@
 .footer-icon {
     font-size: 1.4rem;
     align-self: center;
+    margin-bottom: 7px;
 }
 
 .whatsapp-icon {

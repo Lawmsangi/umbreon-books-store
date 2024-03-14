@@ -14,6 +14,35 @@
     max-height: 300px;
 }
 
+.details-wishlist-container {
+    display: flex;
+    position: relative;
+}
+
+.details-wishlist-icon {
+    color: #ccc;
+    cursor: pointer;
+    font-size: 20px;
+    border: none;
+    background-color: transparent;
+}
+
+.wishlist-icon:hover {
+    color: #ff8800;
+}
+
+.wishlist-alert {
+    background-color: #C39F43;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.in-wishlist {
+    color: #C39F43;
+}
+
 .book-details {
     display: flex;
     flex-direction: column;

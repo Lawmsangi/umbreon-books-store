@@ -9,11 +9,15 @@
     height: 20vh;
 }
 
+.navbar a {
+    color: #fff;
+}
+
 .navbar-first {
     display: flex;
     justify-content: space-between;
     height: 10vh;
-    background-color: #eee;
+    background-color: #346250;
     width: 100%;
 }
 
@@ -28,7 +32,7 @@
     gap: 10px;
     padding: 0 10px;
     font-size: 1.1rem;
-    color: #557A95;
+    color: #fff;
 }
 
 .navbar-links a {
@@ -110,7 +114,7 @@
 
 .navbar-wishlist-icon {
     cursor: pointer;
-    color: #ff8800;
+    color: #C39F43;
 }
 .navbar-second {
     height: 10vh;
@@ -164,6 +168,7 @@
     font-size: 2.1rem;
     align-self: center;
     margin-top: 20px;
+    color: #346250;
 }
 
 .count-cart {

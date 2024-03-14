@@ -61,11 +61,11 @@ span {
 }
 
 .wishlist-icon:hover {
-    color: #ff8800;
+    color: #C39F43
 }
 
 .wishlist-alert {
-    background-color: #ff8800;
+    background-color: #C39F43;
     color: #fff;
     padding: 5px;
     border-radius: 5px;
@@ -73,7 +73,7 @@ span {
 }
 
 .in-wishlist  {
-    color: #ff8800;
+    color: #C39F43;
 }
 
 .strike {
