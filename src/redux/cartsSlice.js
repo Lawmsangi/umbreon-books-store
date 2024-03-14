@@ -21,7 +21,9 @@ const loadWishlistFromStorage = () => {
 }
 
 const saveWishlistToLocalStorage = (wishlist) => {
-    localStorage.setItem("wishlist",JSON.stringify(wishlist))
+    if (wishlist) {
+        localStorage.setItem("wishlist",JSON.stringify(wishlist))
+    }
 }
 
 export const getCartTotal = (cart) =>
