@@ -11,9 +11,9 @@
     border-bottom: 1px solid lightgray;
 }
 
-
 .payment__container>h1 a {
     text-decoration: none;
+    color: #3E5962;
 }
 
 .payment__section {
@@ -34,7 +34,7 @@
 }
 
 .payment__details button {
-    background-color: #346250;
+    background-color: #3E5962;
     border: none;
     width: 100px;
     padding: 10px;
@@ -44,5 +44,5 @@
 }
 
 .payment__details button:hover {
-    background-color: #1e3d2b;
+    background-color: #3b4e54;
 }

@@ -80,16 +80,18 @@
 }   
 
 .buy-btn {
-    background-color: #346250;
+    background-color: #3E5962;
     border: none;
     width: 200px;
     padding: 10px;
     color: #fff;
     text-transform: uppercase;
+    transition: transform 0.3s ease;
 }
 
 .buy-btn:hover {
-    background-color: #1e3d2b;
+    background-color: #3b4e54;
+    transform: scale(0.9);
 }
 
 @media screen and (max-width: 900px) {

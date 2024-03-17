@@ -14,6 +14,10 @@
     margin: 20px 10px;
 }
 
+.wishlist-container h2 {
+    color: #3E5962;
+}
+
 .wishlist-item {
     display: flex;
     flex-direction: column;
