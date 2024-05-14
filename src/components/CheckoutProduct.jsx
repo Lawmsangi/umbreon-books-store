@@ -5,7 +5,7 @@ import '../styles/CheckoutProduct.css'
 import { Link } from 'react-router-dom';
 // import QuantityDropdown from './QuantityDropdown';
 
-const CheckoutProduct = ({ item, index, title, image,mrp, price,author }) => {
+const CheckoutProduct = ({ index, title, image,mrp, price,author }) => {
   const dispatch = useDispatch()
   const { cart } = useSelector((store)=>store.cart)
 

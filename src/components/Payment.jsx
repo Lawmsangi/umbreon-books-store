@@ -1,15 +1,23 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import CheckoutProduct from './CheckoutProduct'
+// import CheckoutProduct from './CheckoutProduct'
 import { Link } from 'react-router-dom'
 import '../styles/Payment.css'
 import useRazorpay from "react-razorpay";
 import { getCartTotal } from '../redux/cartsSlice'
 import LogoIcon from '../assets/umbreon_books.png'
+import AddressField from './AddressField'
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
-const Payment = () => {
+const Payment = ({ index, title, image,mrp, price,author }) => {
   const { cart } = useSelector((store)=>store.cart)
   const [Razorpay] = useRazorpay();
+
+  const subtotal = getCartTotal(cart);
+  const shippingFee = subtotal < 999 ? 40 : 0;
+  const cashOnDeliveryFee = 50;
+  const orderTotal = subtotal + shippingFee + cashOnDeliveryFee;
   
   const handlePayment = async () => {
 //   const order = await createOrder(params); //  Create order on your backend
@@ -47,42 +55,56 @@ const Payment = () => {
 
   return (
     <div className='payment'>
-       <div className="payment__container">
-        <h1>Checkout(<Link to='/checkout'>{cart?.length}items</Link>)</h1>
-            <div className="payment__section">
-                <div className="payment__title">
-                  <h3>Delivery address</h3>      
-                </div>
-                <div className="payment__address">
-                    {/* <p>{user?.email}</p> */}
-                    <p>123 React Lane</p>
-                    <p>Los Angeles, CA</p>
-                </div>
+      <h1>Checkout(<Link to='/checkout'>{cart?.length}items</Link>)</h1>
+        
+        <div className="payments-wrapper">
+          <div className="payment__section-left">
+            <div className="payment__title">
+              <h3>Delivery address</h3>      
+            </div>
+            <div className="payment__address">
+              <div className="address-wrapper">
+                <AddressField />    
+              </div>
             </div>
 
-            <div className="payment__section">
-                <div className="payment__title">
-                  <h3>Review items and delivery</h3>      
-                </div>
-                <div className="payment__items">
-                    {cart.map(item=>(<CheckoutProduct
-                    title={item.title}
-                    image={item.img}
-                    price={item.ourPrice}
-                    rating={item.rating}
-                />))}
-                </div>
+          </div>
+
+
+          <div className="payment__section-right">
+            <div className="payment__title">
+              <h3>ITEMS SUMMARY({cart?.length} item)</h3>      
             </div>
 
-            <div className="payment__section">
-                <div className="payment__title">
-                    <h3>Payment method</h3>
+            <div className="item__summary">
+              {cart.map((item,index)=> {
+                return (
+                <div className="summary-product" key={index}>
+                  <img className='summary-product__image' src={item.img} alt={item.title} />
+                    <div className="summary-product__info">
+                      <p className="checkout-product__title">{item.title}</p>
+                      <p className="checkout-product__title"> by {item.author}</p>
+                      <p><span className='strike'>₹{item.mrp}</span><span className='our-price'> ₹{item.ourPrice}</span></p>
+                    </div>
                 </div>
-                <div className="payment__details">
-                    <button onClick={handlePayment}>Pay Now</button>
-                </div>
+                )
+              })}
             </div>
-       </div>
+                
+            <div className='summary-total'>
+              <p className='summary-total-items'><span>Subtotal</span> <span>₹ {subtotal.toFixed(2)}</span></p>
+              <p className='summary-total-items'><span>Estimated Shipping</span> <span>₹ {shippingFee}</span></p>
+              <p className='summary-total-items'><span>Cash on Delivery</span> <span>₹ {cashOnDeliveryFee}</span></p>
+              <p className='summary-total-items underline'><span>Order Total</span> <span>₹ {orderTotal.toFixed(2)}</span></p>
+            </div>
+            <div className="payment__details">
+              <Stack spacing={2} direction="row">
+                <Button onClick={handlePayment} variant="contained">Submit Order</Button>
+            </Stack>
+            </div>
+          </div>
+        </div>
+    
     </div>
   )
 }
